@@ -41,12 +41,16 @@ function serveStatic(req, res, pathname) {
     return true;
   }
 
-  // Check if file exists
+  // Check if file exists in root or public folder
   let targetPath = filePath;
   if (!fs.existsSync(targetPath)) {
-    // Try appending .html for clean URLs (e.g. /customer -> /customer.html)
-    if (fs.existsSync(targetPath + '.html')) {
+    const publicPath = path.join(ROOT_DIR, 'public', safePath);
+    if (fs.existsSync(publicPath)) {
+      targetPath = publicPath;
+    } else if (fs.existsSync(targetPath + '.html')) {
       targetPath = targetPath + '.html';
+    } else if (fs.existsSync(publicPath + '.html')) {
+      targetPath = publicPath + '.html';
     } else {
       return false;
     }

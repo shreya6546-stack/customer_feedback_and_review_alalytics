@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FeedbackPro Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+  <body class="auth-body theme-light" data-page="login">
+    <div class="auth-shell">
+      <div class="auth-card">
+        <div class="auth-header">
+          <h1>
+            <img
+              class="brand-logo"
+              src="assets/images/FeedbackPro%20Analytics%20Logo.png"
+              alt="FeedbackPro - Collect, Analyze, Improve"
+              width="240"
+              height="80"
+            />
+          </h1>
+          <p>Enterprise Customer Analytics &amp; Review Portal</p>
+          <div class="auth-feature-tags">
+            <span><i class="fa-solid fa-wand-magic-sparkles"></i> AI Sentiment</span>
+            <span><i class="fa-solid fa-chart-line"></i> Analytics</span>
+            <span><i class="fa-solid fa-comments"></i> Customer Portal</span>
+          </div>
+        </div>
+
+        <div class="dual-demo-actions">
+          <button type="button" class="instant-demo-btn" id="instantDemoBtn">
+            <i class="fa-solid fa-user-shield"></i> Admin Demo Login
+          </button>
+          <button type="button" class="instant-customer-btn" id="instantCustomerDemoBtn">
+            <i class="fa-solid fa-user-check"></i> Customer Portal Demo
+          </button>
+        </div>
+
+        <div class="auth-divider"><span>or sign in manually</span></div>
+
+        <div class="auth-toggle">
+          <button class="auth-tab active" data-auth-tab="login">Login</button>
+          <button class="auth-tab" data-auth-tab="signup">Sign Up</button>
+        </div>
+
+        <form id="loginForm" class="auth-form active">
+          <div class="input-group">
+            <label for="loginEmail">Email address</label>
+            <input type="email" id="loginEmail" value="admin@feedbackpro.io" required />
+          </div>
+          <div class="input-group">
+            <label for="loginPassword">Password</label>
+            <div class="password-input-wrap">
+              <input type="password" id="loginPassword" value="admin123" required />
+              <button type="button" class="password-toggle-btn" id="toggleLoginPassword" aria-label="Toggle password visibility">
+                <i class="fa-regular fa-eye"></i>
+              </button>
+            </div>
+          </div>
+          <button class="primary-btn block-btn" type="submit">Sign In</button>
+          <a class="link-btn inline-link" href="#" id="forgotPasswordLink">Forgot password?</a>
+        </form>
+
+        <form id="signupForm" class="auth-form">
+          <div class="input-group">
+            <label>Account portal</label>
+            <div class="role-selector" id="signupRoleSelector">
+              <label class="role-option active">
+                <input type="radio" name="signupRole" value="customer" checked />
+                <span><i class="fa-solid fa-star"></i> Customer Portal</span>
+              </label>
+              <label class="role-option">
+                <input type="radio" name="signupRole" value="admin" />
+                <span><i class="fa-solid fa-user-shield"></i> Admin Workspace</span>
+              </label>
+            </div>
+          </div>
+          <div class="input-group">
+            <label for="signupName">Full name</label>
+            <input type="text" id="signupName" placeholder="Alex Customer" required />
+          </div>
+          <div class="input-group">
+            <label for="signupEmail">Email</label>
+            <input type="email" id="signupEmail" placeholder="alex@company.com" autocomplete="email" required />
+          </div>
+          <div class="input-group">
+            <label for="signupPassword">Password</label>
+            <div class="password-input-wrap">
+              <input type="password" id="signupPassword" placeholder="At least 8 characters" minlength="8" autocomplete="new-password" required />
+              <button type="button" class="password-toggle-btn" id="toggleSignupPassword" aria-label="Toggle password visibility">
+                <i class="fa-regular fa-eye"></i>
+              </button>
+            </div>
+          </div>
+          <button class="primary-btn block-btn" type="submit">Create account</button>
+        </form>
+
+        <div class="demo-info">
+          <strong>Demo credentials</strong>
+          <p><b>Admin:</b> admin@feedbackpro.io / admin123</p>
+          <p><b>Customer:</b> customer@feedbackpro.io / customer123</p>
+          <small>This is a frontend-only demo. It is not secure production authentication.</small>
+          <a class="guest-portal-link" href="customer.html">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Public Customer Portal as Guest
+          </a>
+        </div>
+
+        <div class="customer-portal-entry" style="margin-top: 1rem; padding-top: 0.9rem; border-top: 1px solid var(--line); text-align: center; font-size: 0.8rem; color: var(--muted);">
+          Are you a customer?
+          <a href="customer-portal.html" style="color: var(--primary); font-weight: 600; text-decoration: none;">Customer Login Portal &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="js/storage.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
