@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FeedbackPro | 404 Page Not Found</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <style>
+      .error-container {
+        min-height: 80vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 2rem;
+      }
+      .error-code {
+        font-size: 6rem;
+        font-weight: 800;
+        line-height: 1;
+        background: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 1rem;
+      }
+      .error-title {
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: var(--text-primary, #1e293b);
+        margin-bottom: 0.75rem;
+      }
+      .error-desc {
+        font-size: 1rem;
+        color: var(--text-secondary, #64748b);
+        max-width: 480px;
+        margin-bottom: 2rem;
+        line-height: 1.6;
+      }
+      .error-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: center;
+      }
+      .error-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.2s ease;
+      }
+      .error-btn-primary {
+        background: var(--primary, #4f46e5);
+        color: #ffffff;
+      }
+      .error-btn-primary:hover {
+        background: #4338ca;
+        color: #ffffff;
+      }
+      .error-btn-secondary {
+        background: #ffffff;
+        color: var(--text-primary, #1e293b);
+        border: 1px solid var(--border, #e2e8f0);
+      }
+      .error-btn-secondary:hover {
+        background: #f8fafc;
+      }
+    </style>
+  </head>
+  <body class="theme-light">
+    <div class="feedback-page-shell">
+      <header class="feedback-header">
+        <div class="brand-wrap">
+          <a href="/">
+            <img
+              class="brand-logo"
+              src="assets/images/FeedbackPro%20Analytics%20Logo.png"
+              alt="FeedbackPro - Collect, Analyze, Improve"
+              width="240"
+              height="80"
+            />
+          </a>
+        </div>
+      </header>
+
+      <main class="error-container">
+        <div class="error-code">404</div>
+        <h1 class="error-title">Page Not Found</h1>
+        <p class="error-desc">
+          The requested page could not be found or has been moved. You can return to the dashboard or open the customer feedback portal.
+        </p>
+        <div class="error-actions">
+          <a href="/" class="error-btn error-btn-primary">
+            <i class="fa-solid fa-gauge-high"></i> Admin Dashboard
+          </a>
+          <a href="/customer" class="error-btn error-btn-secondary">
+            <i class="fa-solid fa-store"></i> Customer Portal
+          </a>
+          <a href="/feedback" class="error-btn error-btn-secondary">
+            <i class="fa-solid fa-pen-to-square"></i> Submit Review
+          </a>
+          <a href="/login" class="error-btn error-btn-secondary">
+            <i class="fa-solid fa-arrow-right-to-bracket"></i> Login
+          </a>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

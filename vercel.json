@@ -1,0 +1,36 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "version": 2,
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/[...path]"
+    },
+    {
+      "source": "/api",
+      "destination": "/api/index"
+    },
+    {
+      "source": "/",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/customer",
+      "destination": "/customer.html"
+    },
+    {
+      "source": "/customer-portal",
+      "destination": "/customer-portal.html"
+    },
+    {
+      "source": "/feedback",
+      "destination": "/feedback.html"
+    },
+    {
+      "source": "/login",
+      "destination": "/login.html"
+    }
+  ]
+}

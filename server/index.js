@@ -28,6 +28,18 @@ function sendJson(res, statusCode, data) {
 }
 
 function parseJsonBody(req) {
+  // If req.body is already parsed (e.g. by Vercel serverless environment)
+  if (req.body !== undefined && req.body !== null) {
+    if (typeof req.body === 'object') return Promise.resolve(req.body);
+    if (typeof req.body === 'string') {
+      try {
+        return Promise.resolve(req.body.trim() ? JSON.parse(req.body) : {});
+      } catch (err) {
+        return Promise.reject(new Error('Invalid JSON payload'));
+      }
+    }
+  }
+
   return new Promise((resolve, reject) => {
     let bodyStr = '';
     req.on('data', (chunk) => {
@@ -49,7 +61,7 @@ function parseJsonBody(req) {
   });
 }
 
-const server = http.createServer(async (req, res) => {
+async function handleRequest(req, res) {
   // Global CORS handling
   if (req.method === 'OPTIONS') {
     res.writeHead(204, {
@@ -62,8 +74,18 @@ const server = http.createServer(async (req, res) => {
   }
 
   const parsedUrl = parseUrl(req.url, true);
-  const pathname = parsedUrl.pathname.replace(/\/+$/, '') || '/';
-  const query = parsedUrl.query;
+  let pathname = parsedUrl.pathname.replace(/\/+$/, '') || '/';
+
+  // Support Vercel catch-all rewrites where path segments are passed in query
+  if (req.query && req.query.path) {
+    const segments = Array.isArray(req.query.path) ? req.query.path.join('/') : req.query.path;
+    pathname = `/api/${segments}`.replace(/\/+$/, '');
+  } else if (req.query && req.query.__path) {
+    const p = req.query.__path;
+    pathname = (p.startsWith('/') ? `/api${p}` : `/api/${p}`).replace(/\/+$/, '');
+  }
+
+  const query = { ...parsedUrl.query, ...(req.query || {}) };
   const method = req.method.toUpperCase();
 
   // Parse JSON body for mutation methods
@@ -79,6 +101,16 @@ const server = http.createServer(async (req, res) => {
   // --- API Routes ---
   if (pathname.startsWith('/api')) {
     try {
+      // Base API status
+      if ((pathname === '/api' || pathname === '/api/') && method === 'GET') {
+        return sendJson(res, 200, {
+          status: 'ok',
+          message: 'FeedbackPro Analytics API is operational',
+          version: db.getVersion(),
+          totalReviews: db.getReviews().length
+        });
+      }
+
       // Health check
       if (pathname === '/api/health' && method === 'GET') {
         return sendJson(res, 200, {
@@ -209,7 +241,9 @@ const server = http.createServer(async (req, res) => {
       </html>
     `);
   }
-});
+}
+
+const server = http.createServer(handleRequest);
 
 function startServer(port = PORT, host = HOST) {
   return new Promise((resolve, reject) => {
@@ -233,5 +267,6 @@ if (require.main === module) {
 
 module.exports = {
   server,
-  startServer
+  startServer,
+  handleRequest
 };

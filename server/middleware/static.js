@@ -42,20 +42,26 @@ function serveStatic(req, res, pathname) {
   }
 
   // Check if file exists
-  if (!fs.existsSync(filePath)) {
-    return false;
+  let targetPath = filePath;
+  if (!fs.existsSync(targetPath)) {
+    // Try appending .html for clean URLs (e.g. /customer -> /customer.html)
+    if (fs.existsSync(targetPath + '.html')) {
+      targetPath = targetPath + '.html';
+    } else {
+      return false;
+    }
   }
 
-  const stat = fs.statSync(filePath);
+  const stat = fs.statSync(targetPath);
   if (stat.isDirectory()) {
-    const indexPath = path.join(filePath, 'index.html');
+    const indexPath = path.join(targetPath, 'index.html');
     if (fs.existsSync(indexPath)) {
       return serveFile(res, indexPath);
     }
     return false;
   }
 
-  return serveFile(res, filePath);
+  return serveFile(res, targetPath);
 }
 
 function serveFile(res, filePath) {

@@ -168,38 +168,68 @@ class Database {
   }
 
   init() {
-    if (!fs.existsSync(DATA_DIR)) {
-      fs.mkdirSync(DATA_DIR, { recursive: true });
+    let initial = null;
+
+    // Check if writable temporary db exists (serverless persistence across warm invocations)
+    const isServerless = Boolean(process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME);
+    const serverlessTmp = '/tmp/db.json';
+
+    if (isServerless && fs.existsSync(serverlessTmp)) {
+      try {
+        const raw = fs.readFileSync(serverlessTmp, 'utf8');
+        initial = JSON.parse(raw);
+      } catch (_) {}
     }
 
-    if (!fs.existsSync(DB_FILE)) {
-      const initial = getDefaultDatabase();
-      this.writeToDisk(initial);
-      this.memoryDb = initial;
-    } else {
+    if (!initial && fs.existsSync(DB_FILE)) {
       try {
         const raw = fs.readFileSync(DB_FILE, 'utf8');
-        this.memoryDb = JSON.parse(raw);
-        // Validate core structure
-        if (!Array.isArray(this.memoryDb.reviews)) {
-          this.memoryDb = getDefaultDatabase();
-          this.writeToDisk(this.memoryDb);
-        }
+        initial = JSON.parse(raw);
       } catch (err) {
-        console.error('Error reading database file, re-initializing seed data:', err);
-        this.memoryDb = getDefaultDatabase();
+        console.error('Error reading database file:', err.message);
+      }
+    }
+
+    if (!initial || !Array.isArray(initial.reviews)) {
+      initial = getDefaultDatabase();
+    }
+
+    this.memoryDb = initial;
+
+    // Attempt to persist if file does not exist, catching read-only errors
+    try {
+      if (!isServerless && !fs.existsSync(DATA_DIR)) {
+        fs.mkdirSync(DATA_DIR, { recursive: true });
+      }
+      if (!isServerless && !fs.existsSync(DB_FILE)) {
         this.writeToDisk(this.memoryDb);
       }
+    } catch (err) {
+      // Ignore directory creation errors in read-only environments
     }
   }
 
   writeToDisk(data) {
-    const tmpFile = `${DB_FILE}.${Date.now()}.${Math.random().toString(36).slice(2, 6)}.tmp`;
     data.version = Date.now();
     data.lastModified = new Date().toISOString();
-    fs.writeFileSync(tmpFile, JSON.stringify(data, null, 2), 'utf8');
-    fs.renameSync(tmpFile, DB_FILE);
     this.memoryDb = data;
+
+    const isServerless = Boolean(process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME);
+    const targetDir = isServerless ? '/tmp' : DATA_DIR;
+    const targetFile = isServerless ? '/tmp/db.json' : DB_FILE;
+
+    try {
+      if (!fs.existsSync(targetDir)) {
+        fs.mkdirSync(targetDir, { recursive: true });
+      }
+      const tmpFile = `${targetFile}.${Date.now()}.${Math.random().toString(36).slice(2, 6)}.tmp`;
+      fs.writeFileSync(tmpFile, JSON.stringify(data, null, 2), 'utf8');
+      fs.renameSync(tmpFile, targetFile);
+    } catch (err) {
+      // In read-only or ephemeral environment, memoryDb remains updated
+      console.warn('Filesystem write bypassed or failed (ephemeral/serverless environment):', err.message);
+    }
+
     return data;
   }
 
