@@ -74,7 +74,7 @@ function renderCustomerHeaderAuth() {
   if (!container) return;
   const auth = typeof ensureAuth === 'function' ? ensureAuth() : { isLoggedIn: false };
 
-  if (auth.isLoggedIn && auth.role === 'customer') {
+  if (auth.isLoggedIn) {
     const initial = (auth.name || 'C').charAt(0).toUpperCase();
     container.innerHTML = `
       <div class="customer-session-pill">
@@ -84,15 +84,6 @@ function renderCustomerHeaderAuth() {
           <small>${escapeHtml(auth.email || '')}</small>
         </div>
       </div>
-      <button type="button" class="secondary-btn" id="customerLogoutBtn">
-        <i class="fa-solid fa-right-from-bracket"></i> Sign Out
-      </button>
-    `;
-  } else if (auth.isLoggedIn && (auth.role || 'admin') === 'admin') {
-    container.innerHTML = `
-      <a href="index.html" class="primary-btn">
-        <i class="fa-solid fa-gauge-high"></i> Admin Dashboard
-      </a>
       <button type="button" class="secondary-btn" id="customerLogoutBtn">
         <i class="fa-solid fa-right-from-bracket"></i> Sign Out
       </button>
