@@ -156,6 +156,16 @@ function getDefaultDatabase() {
         password: 'customer123',
         role: 'customer',
         createdAt: new Date().toISOString()
+      },
+      {
+        id: 'user_company',
+        name: 'SmartHub Inc',
+        email: 'company@feedbackpro.io',
+        password: 'company123',
+        role: 'company',
+        companyName: 'SmartHub Inc',
+        phone: '+1 (555) 234-5678',
+        createdAt: new Date().toISOString()
       }
     ]
   };
@@ -192,6 +202,18 @@ class Database {
 
     if (!initial || !Array.isArray(initial.reviews)) {
       initial = getDefaultDatabase();
+    } else {
+      // Ensure standard seed users exist
+      const defaultUsers = getDefaultDatabase().users;
+      if (!Array.isArray(initial.users)) {
+        initial.users = defaultUsers;
+      } else {
+        defaultUsers.forEach((defUser) => {
+          if (!initial.users.some((u) => u.email.toLowerCase() === defUser.email.toLowerCase())) {
+            initial.users.push(defUser);
+          }
+        });
+      }
     }
 
     this.memoryDb = initial;
@@ -510,6 +532,8 @@ class Database {
       email: normEmail,
       password: String(data.password || ''),
       role: data.role || 'customer',
+      companyName: String(data.companyName || '').trim(),
+      phone: String(data.phone || '').trim(),
       createdAt: new Date().toISOString()
     };
 

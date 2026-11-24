@@ -12,6 +12,42 @@
     {
       "source": "/api",
       "destination": "/api/index"
+    },
+    {
+      "source": "/",
+      "destination": "/welcome.html"
+    },
+    {
+      "source": "/login",
+      "destination": "/login.html"
+    },
+    {
+      "source": "/signup",
+      "destination": "/signup.html"
+    },
+    {
+      "source": "/signup/customer",
+      "destination": "/signup-customer.html"
+    },
+    {
+      "source": "/signup/company",
+      "destination": "/signup-company.html"
+    },
+    {
+      "source": "/dashboard",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/customer",
+      "destination": "/customer.html"
+    },
+    {
+      "source": "/customer-portal",
+      "destination": "/customer-portal.html"
+    },
+    {
+      "source": "/feedback",
+      "destination": "/feedback.html"
     }
   ]
 }

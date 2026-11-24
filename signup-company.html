@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FeedbackPro — Company Sign Up</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="stylesheet" href="/css/auth-redesign.css" />
+  </head>
+  <body class="auth-page" data-page="signup-company">
+    <div class="auth-bg-ambient">
+      <div class="wave-top"></div>
+      <div class="wave-bottom"></div>
+      <div class="grid-dots"></div>
+    </div>
+
+    <main class="auth-page-wrapper">
+      <div class="auth-box-card compact-form">
+        <!-- Logo & Brand Header -->
+        <div class="auth-box-header">
+          <a href="/" class="brand-header-logo">
+            <div class="brand-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="3" y="13" width="4" height="8" rx="1.5" fill="white" />
+                <rect x="10" y="8" width="4" height="13" rx="1.5" fill="white" />
+                <rect x="17" y="3" width="4" height="18" rx="1.5" fill="white" />
+              </svg>
+            </div>
+            <div class="brand-text-wrap" style="align-items: center;">
+              <span class="brand-name">FeedbackPro</span>
+            </div>
+          </a>
+
+          <h1 class="auth-title">Company Sign Up</h1>
+          <p class="auth-subtitle">Access powerful analytics</p>
+        </div>
+
+        <!-- Alert Container -->
+        <div id="authAlertBox" style="display: none;"></div>
+
+        <!-- Company Registration Form -->
+        <form id="companySignupForm" class="auth-form-body">
+          <input type="hidden" name="role" value="company" />
+
+          <div class="input-field-group">
+            <label for="companyName">Company Name</label>
+            <div class="input-with-icon-wrap">
+              <i class="fa-solid fa-building input-leading-icon"></i>
+              <input
+                type="text"
+                id="companyName"
+                name="companyName"
+                class="custom-auth-input"
+                placeholder="Enter your company name"
+                required
+                autocomplete="organization"
+              />
+            </div>
+          </div>
+
+          <div class="input-field-group">
+            <label for="companyEmail">Official Email</label>
+            <div class="input-with-icon-wrap">
+              <i class="fa-regular fa-envelope input-leading-icon"></i>
+              <input
+                type="email"
+                id="companyEmail"
+                name="email"
+                class="custom-auth-input"
+                placeholder="Enter work email"
+                required
+                autocomplete="email"
+              />
+            </div>
+          </div>
+
+          <div class="input-field-group">
+            <label for="companyPhone">Contact Number</label>
+            <div class="input-with-icon-wrap">
+              <i class="fa-solid fa-phone input-leading-icon"></i>
+              <input
+                type="tel"
+                id="companyPhone"
+                name="phone"
+                class="custom-auth-input"
+                placeholder="Enter contact number"
+                required
+                autocomplete="tel"
+              />
+            </div>
+          </div>
+
+          <div class="input-field-group">
+            <label for="companyPassword">Password</label>
+            <div class="input-with-icon-wrap">
+              <i class="fa-solid fa-lock input-leading-icon"></i>
+              <input
+                type="password"
+                id="companyPassword"
+                name="password"
+                class="custom-auth-input"
+                placeholder="Create a password"
+                required
+                minlength="6"
+                autocomplete="new-password"
+              />
+              <button type="button" class="input-trailing-btn toggle-password-btn" data-target="companyPassword" aria-label="Toggle password visibility">
+                <i class="fa-regular fa-eye-slash"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="input-field-group">
+            <label for="companyConfirmPassword">Confirm Password</label>
+            <div class="input-with-icon-wrap">
+              <i class="fa-solid fa-lock input-leading-icon"></i>
+              <input
+                type="password"
+                id="companyConfirmPassword"
+                name="confirmPassword"
+                class="custom-auth-input"
+                placeholder="Confirm your password"
+                required
+                minlength="6"
+                autocomplete="new-password"
+              />
+              <button type="button" class="input-trailing-btn toggle-password-btn" data-target="companyConfirmPassword" aria-label="Toggle password visibility">
+                <i class="fa-regular fa-eye-slash"></i>
+              </button>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-auth-submit" id="companySignupSubmitBtn">
+            <span>Create Account</span>
+          </button>
+        </form>
+
+        <div class="auth-card-footer">
+          <span>Already have an account?</span>
+          <a href="/login">Log In</a>
+        </div>
+      </div>
+    </main>
+
+    <script src="/js/storage.js"></script>
+    <script src="/js/auth-redesign.js"></script>
+  </body>
+</html>

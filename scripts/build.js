@@ -25,11 +25,15 @@ for (const folder of folders) {
 
 // Copy static pages
 const files = [
+  'welcome.html',
   'index.html',
+  'login.html',
+  'signup.html',
+  'signup-customer.html',
+  'signup-company.html',
   'customer.html',
   'customer-portal.html',
   'feedback.html',
-  'login.html',
   '404.html'
 ];
 for (const file of files) {

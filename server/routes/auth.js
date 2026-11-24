@@ -33,7 +33,9 @@ function handleLogin(req, res, body) {
     id: user.id,
     name: user.name,
     email: user.email,
-    role: user.role
+    role: user.role,
+    companyName: user.companyName || '',
+    phone: user.phone || ''
   };
 
   activeSessions.set(token, safeUser);
@@ -54,7 +56,9 @@ function handleRegister(req, res, body) {
     name: body.name,
     email: body.email,
     password: body.password,
-    role: body.role || 'customer'
+    role: body.role || 'customer',
+    companyName: body.companyName || '',
+    phone: body.phone || ''
   });
 
   if (!newUser) {
@@ -66,7 +70,9 @@ function handleRegister(req, res, body) {
     id: newUser.id,
     name: newUser.name,
     email: newUser.email,
-    role: newUser.role
+    role: newUser.role,
+    companyName: newUser.companyName || '',
+    phone: newUser.phone || ''
   };
 
   activeSessions.set(token, safeUser);

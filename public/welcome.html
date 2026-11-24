@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FeedbackPro — Customer Feedback & Review Analytics Tool</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="stylesheet" href="/css/auth-redesign.css" />
+  </head>
+  <body class="auth-page" data-page="welcome">
+    <!-- Ambient Wavy Background -->
+    <div class="auth-bg-ambient">
+      <div class="wave-top"></div>
+      <div class="wave-bottom"></div>
+      <div class="grid-dots"></div>
+    </div>
+
+    <!-- Main Centered Welcome Card (Page 1) -->
+    <main class="welcome-container">
+      <div class="welcome-card">
+        <!-- Header: Logo on left, Login & Sign Up on right -->
+        <header class="welcome-topbar">
+          <a href="/" class="brand-header-logo" aria-label="FeedbackPro Home">
+            <div class="brand-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="3" y="13" width="4" height="8" rx="1.5" fill="white" />
+                <rect x="10" y="8" width="4" height="13" rx="1.5" fill="white" />
+                <rect x="17" y="3" width="4" height="18" rx="1.5" fill="white" />
+              </svg>
+            </div>
+            <div class="brand-text-wrap">
+              <span class="brand-name">FeedbackPro</span>
+            </div>
+          </a>
+
+          <div class="welcome-top-actions">
+            <a href="/login" class="welcome-login-link">Login</a>
+            <a href="/signup" class="welcome-signup-btn">Sign Up</a>
+          </div>
+        </header>
+
+        <!-- Hero Section: Left content, Right analytics graphics -->
+        <div class="welcome-hero-grid">
+          <!-- Left Column -->
+          <div class="welcome-content-col">
+            <h1 class="welcome-main-heading">
+              Customer Feedback &amp;<br />
+              Review <span class="highlight-purple">Analytics</span> Tool
+            </h1>
+
+            <h2 class="welcome-subheading">
+              Turn Customer Feedback into Actionable Insights
+            </h2>
+
+            <p class="welcome-desc">
+              Collect, analyze and understand reviews from your customers and grow your business.
+            </p>
+
+            <div class="welcome-hero-buttons">
+              <a href="/login" class="btn-pill-primary">
+                <span>Login</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+              <a href="/signup" class="btn-pill-outline">
+                <span>Sign Up</span>
+              </a>
+            </div>
+
+            <!-- Bottom Feature Highlights with Dividers -->
+            <div class="welcome-features-bar">
+              <div class="feature-pill-item">
+                <div class="feature-pill-icon">
+                  <i class="fa-solid fa-star"></i>
+                </div>
+                <span class="feature-pill-title">Sentiment Analysis</span>
+              </div>
+
+              <div class="feature-divider"></div>
+
+              <div class="feature-pill-item">
+                <div class="feature-pill-icon">
+                  <i class="fa-solid fa-chart-simple"></i>
+                </div>
+                <span class="feature-pill-title">Review Tracking</span>
+              </div>
+
+              <div class="feature-divider"></div>
+
+              <div class="feature-pill-item">
+                <div class="feature-pill-icon">
+                  <i class="fa-regular fa-lightbulb"></i>
+                </div>
+                <span class="feature-pill-title">Business Insights</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Rich Floating SaaS Analytics Illustration -->
+          <div class="welcome-illustration-col" aria-hidden="true">
+            <!-- 1. Customer Review Card -->
+            <div class="mock-card mock-review-card">
+              <div class="mock-avatar">
+                <i class="fa-solid fa-user"></i>
+              </div>
+              <div class="mock-review-content">
+                <div class="mock-stars">
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                </div>
+                <div class="mock-skeleton-line" style="width: 88%; margin-bottom: 5px;"></div>
+                <div class="mock-skeleton-line" style="width: 60%;"></div>
+              </div>
+              <div class="mock-thumbs-badge">
+                <i class="fa-solid fa-thumbs-up"></i>
+              </div>
+            </div>
+
+            <!-- 2. Dual Charts Row: Trend line & Donut -->
+            <div class="mock-chart-row">
+              <!-- Line Chart Card -->
+              <div class="mock-card mock-line-card">
+                <div class="mock-chart-header">
+                  <span>Sentiment Trend</span>
+                  <span class="mock-chart-tag"><i class="fa-solid fa-arrow-trend-up"></i> +24%</span>
+                </div>
+                <svg viewBox="0 0 160 65" style="width: 100%; height: 55px; overflow: visible;">
+                  <defs>
+                    <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#5935F5" stop-opacity="0.28" />
+                      <stop offset="100%" stop-color="#5935F5" stop-opacity="0.0" />
+                    </linearGradient>
+                  </defs>
+                  <path d="M 0,55 Q 35,42 65,30 T 115,18 T 160,8 L 160,65 L 0,65 Z" fill="url(#chartGrad)" />
+                  <path d="M 0,55 Q 35,42 65,30 T 115,18 T 160,8" fill="none" stroke="#5935F5" stroke-width="2.5" stroke-linecap="round" />
+                  <circle cx="65" cy="30" r="3.5" fill="#5935F5" />
+                  <circle cx="115" cy="18" r="3.5" fill="#5935F5" />
+                  <circle cx="160" cy="8" r="4" fill="#8057FF" stroke="#FFFFFF" stroke-width="2" />
+                </svg>
+              </div>
+
+              <!-- Donut Chart Card -->
+              <div class="mock-card mock-donut-card">
+                <svg viewBox="0 0 76 76" style="width: 68px; height: 68px; transform: rotate(-90deg);">
+                  <!-- Background ring -->
+                  <circle cx="38" cy="38" r="28" fill="none" stroke="#F1EDFD" stroke-width="10" />
+                  <!-- Positive segment (purple #5935F5) -->
+                  <circle cx="38" cy="38" r="28" fill="none" stroke="#5935F5" stroke-width="10" stroke-dasharray="125 180" stroke-linecap="round" />
+                  <!-- Neutral segment (violet #8057FF) -->
+                  <circle cx="38" cy="38" r="28" fill="none" stroke="#8057FF" stroke-width="10" stroke-dasharray="35 180" stroke-dashoffset="-128" />
+                </svg>
+                <div style="font-size: 11px; font-weight: 700; color: #17143F; margin-top: 4px;">78% Positive</div>
+              </div>
+            </div>
+
+            <!-- 3. Customer Satisfaction Progress Card -->
+            <div class="mock-card mock-satisfaction-card">
+              <div class="mock-smile-avatar">
+                <i class="fa-regular fa-face-smile"></i>
+              </div>
+              <div class="mock-progress-bars">
+                <div style="display: flex; justify-content: space-between; font-size: 11px; font-weight: 600; color: #17143F;">
+                  <span>Satisfaction Score</span>
+                  <span style="color: #5935F5;">4.9 / 5.0</span>
+                </div>
+                <div class="mock-progress-bar-bg">
+                  <div class="mock-progress-fill-1"></div>
+                </div>
+                <div class="mock-progress-bar-bg" style="width: 85%;">
+                  <div class="mock-progress-fill-2"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="/js/storage.js"></script>
+    <script>
+      // If user is already logged in, enhance buttons to go to their portal
+      document.addEventListener('DOMContentLoaded', () => {
+        const auth = typeof ensureAuth === 'function' ? ensureAuth() : null;
+        if (auth && auth.isLoggedIn) {
+          const targetUrl = auth.role === 'customer' ? '/customer.html' : '/index.html';
+          const topActions = document.querySelector('.welcome-top-actions');
+          if (topActions) {
+            topActions.innerHTML = `
+              <span style="font-size: 13px; color: var(--text-muted); font-weight: 500;">Hi, ${auth.name || 'User'}</span>
+              <a href="${targetUrl}" class="welcome-signup-btn">Go to ${auth.role === 'customer' ? 'Customer Portal' : 'Dashboard'} &rarr;</a>
+            `;
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,6 +1,6 @@
 {
-  "version": 1795089900323,
-  "lastModified": "2026-11-19T12:05:00.323Z",
+  "version": 1795512563527,
+  "lastModified": "2026-11-24T09:29:23.527Z",
   "reviews": [
     {
       "id": "r1",
@@ -762,6 +762,21 @@
   ],
   "notifications": [
     {
+      "id": "notif-mwuhtkpi-bdde9bba",
+      "title": "Response Sent",
+      "message": "Replied to Marcus's review for SmartHub Pro.",
+      "unread": true,
+      "createdAt": "2026-11-24T09:29:23.478Z"
+    },
+    {
+      "id": "notif-mwuhtkpa-4b7b6ad3",
+      "reviewId": "r-mwuhtkpa-f2ee27ff",
+      "title": "New Customer Review",
+      "message": "Marcus Vance gave a 5-star review for SmartHub Pro.",
+      "unread": true,
+      "createdAt": "2026-11-24T09:29:23.470Z"
+    },
+    {
       "id": "notif-mwni6fq9-602b702f",
       "title": "Response Sent",
       "message": "Replied to Marcus Vance's review for SmartHub Pro.",
@@ -849,6 +864,116 @@
       "password": "password123",
       "role": "customer",
       "createdAt": "2026-11-19T12:05:00.322Z"
+    },
+    {
+      "id": "user-mwuhqyc4-9b09d068",
+      "name": "Acme Global Corp",
+      "email": "test_corp_1795512441172@feedbackpro.io",
+      "password": "Password123!",
+      "role": "company",
+      "companyName": "Acme Global Corp",
+      "phone": "+1-555-0199",
+      "createdAt": "2026-11-24T09:27:21.172Z"
+    },
+    {
+      "id": "user-mwuhqycd-878a929f",
+      "name": "Jane Customer",
+      "email": "test_cust_1795512441181@feedbackpro.io",
+      "password": "Password123!",
+      "role": "customer",
+      "companyName": "",
+      "phone": "",
+      "createdAt": "2026-11-24T09:27:21.181Z"
+    },
+    {
+      "id": "user_company",
+      "name": "SmartHub Inc",
+      "email": "company@feedbackpro.io",
+      "password": "company123",
+      "role": "company",
+      "companyName": "SmartHub Inc",
+      "phone": "+1 (555) 234-5678",
+      "createdAt": "2026-11-24T09:27:59.433Z"
+    },
+    {
+      "id": "user-mwuhrruz-0ae8855e",
+      "name": "Acme Global Corp",
+      "email": "test_corp_1795512479435@feedbackpro.io",
+      "password": "Password123!",
+      "role": "company",
+      "companyName": "Acme Global Corp",
+      "phone": "+1-555-0199",
+      "createdAt": "2026-11-24T09:27:59.436Z"
+    },
+    {
+      "id": "user-mwuhrrv6-dd63912a",
+      "name": "Jane Customer",
+      "email": "test_cust_1795512479442@feedbackpro.io",
+      "password": "Password123!",
+      "role": "customer",
+      "companyName": "",
+      "phone": "",
+      "createdAt": "2026-11-24T09:27:59.442Z"
+    },
+    {
+      "id": "user-mwuhrrw7-36757863",
+      "name": "API Customer",
+      "email": "api_cust_1795512479479@example.com",
+      "password": "Password123!",
+      "role": "customer",
+      "companyName": "",
+      "phone": "",
+      "createdAt": "2026-11-24T09:27:59.479Z"
+    },
+    {
+      "id": "user-mwuhrrwc-5537fdd9",
+      "name": "Tech Ventures Inc",
+      "email": "api_corp_1795512479484@example.com",
+      "password": "Password123!",
+      "role": "company",
+      "companyName": "Tech Ventures Inc",
+      "phone": "555-0100",
+      "createdAt": "2026-11-24T09:27:59.484Z"
+    },
+    {
+      "id": "user-mwuhsg6f-4810e847",
+      "name": "Acme Global Corp",
+      "email": "test_corp_1795512510951@feedbackpro.io",
+      "password": "Password123!",
+      "role": "company",
+      "companyName": "Acme Global Corp",
+      "phone": "+1-555-0199",
+      "createdAt": "2026-11-24T09:28:30.951Z"
+    },
+    {
+      "id": "user-mwuhsg6l-13327585",
+      "name": "Jane Customer",
+      "email": "test_cust_1795512510957@feedbackpro.io",
+      "password": "Password123!",
+      "role": "customer",
+      "companyName": "",
+      "phone": "",
+      "createdAt": "2026-11-24T09:28:30.957Z"
+    },
+    {
+      "id": "user-mwuhsg7i-bbd4952d",
+      "name": "API Customer",
+      "email": "api_cust_1795512510989@example.com",
+      "password": "Password123!",
+      "role": "customer",
+      "companyName": "",
+      "phone": "",
+      "createdAt": "2026-11-24T09:28:30.990Z"
+    },
+    {
+      "id": "user-mwuhsg7n-935fa5a7",
+      "name": "Tech Ventures Inc",
+      "email": "api_corp_1795512510994@example.com",
+      "password": "Password123!",
+      "role": "company",
+      "companyName": "Tech Ventures Inc",
+      "phone": "555-0100",
+      "createdAt": "2026-11-24T09:28:30.995Z"
     }
   ]
 }

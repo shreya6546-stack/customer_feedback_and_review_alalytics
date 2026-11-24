@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FeedbackPro — Create Your Account</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="stylesheet" href="/css/auth-redesign.css" />
+  </head>
+  <body class="auth-page" data-page="signup-select">
+    <div class="auth-bg-ambient">
+      <div class="wave-top"></div>
+      <div class="wave-bottom"></div>
+      <div class="grid-dots"></div>
+    </div>
+
+    <main class="auth-page-wrapper">
+      <div class="auth-box-card wide-form">
+        <!-- Logo & Brand Header -->
+        <div class="auth-box-header">
+          <a href="/" class="brand-header-logo">
+            <div class="brand-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="3" y="13" width="4" height="8" rx="1.5" fill="white" />
+                <rect x="10" y="8" width="4" height="13" rx="1.5" fill="white" />
+                <rect x="17" y="3" width="4" height="18" rx="1.5" fill="white" />
+              </svg>
+            </div>
+            <div class="brand-text-wrap" style="align-items: center;">
+              <span class="brand-name">FeedbackPro</span>
+            </div>
+          </a>
+
+          <h1 class="auth-title">Create Your Account</h1>
+          <p class="auth-subtitle">Select how you'd like to sign up</p>
+        </div>
+
+        <!-- 2 Side-by-Side Account Type Cards -->
+        <div class="account-type-grid">
+          <!-- Card 1: Customer -->
+          <div class="account-type-box">
+            <div class="account-type-icon">
+              <i class="fa-solid fa-user"></i>
+            </div>
+            <h2 class="account-type-title">Customer</h2>
+            <p class="account-type-desc">
+              Share your feedback, write reviews and help us improve.
+            </p>
+            <a href="/signup/customer" class="btn-type-customer">
+              <span>Continue as Customer</span>
+              <i class="fa-solid fa-arrow-right" style="margin-left: 6px;"></i>
+            </a>
+          </div>
+
+          <!-- Card 2: Company -->
+          <div class="account-type-box">
+            <div class="account-type-icon">
+              <i class="fa-solid fa-building"></i>
+            </div>
+            <h2 class="account-type-title">Company</h2>
+            <p class="account-type-desc">
+              Manage your business, view insights and track customer feedback.
+            </p>
+            <a href="/signup/company" class="btn-type-company">
+              <span>Continue as Company</span>
+              <i class="fa-solid fa-arrow-right" style="margin-left: 6px;"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="auth-card-footer" style="margin-top: 2rem;">
+          <span>Already have an account?</span>
+          <a href="/login">Log In</a>
+        </div>
+      </div>
+    </main>
+
+    <script src="/js/storage.js"></script>
+    <script src="/js/auth-redesign.js"></script>
+  </body>
+</html>
