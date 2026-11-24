@@ -141,39 +141,6 @@ async function handleRequest(req, res) {
         });
       }
 
-      // Companies API for Customer Portal
-      if (pathname === '/api/companies' && method === 'GET') {
-        const defaultCompanies = [
-          { id: 'comp_smarthub', name: 'SmartHub Inc', product: 'SmartHub Pro', category: 'Product Quality & Collaboration', description: 'Enterprise team collaboration and intelligent workflow platform.' },
-          { id: 'comp_nexa', name: 'Nexa CRM Systems', product: 'Nexa CRM', category: 'Customer Service & CRM', description: 'All-in-one relationship management and sales automation software.' },
-          { id: 'comp_insightflow', name: 'InsightFlow Analytics', product: 'InsightFlow', category: 'Website Experience & Reporting', description: 'Real-time analytics, user funnel tracking, and business intelligence.' },
-          { id: 'comp_deliverloop', name: 'DeliverLoop Logistics', product: 'DeliverLoop', category: 'Delivery & Operations', description: 'Fast and scalable supply chain, tracking, and fulfillment logistics.' },
-          { id: 'comp_pulsedesk', name: 'PulseDesk Solutions', product: 'PulseDesk', category: 'Customer Support & Helpdesk', description: 'Omnichannel customer service, ticketing, and live communication tool.' },
-          { id: 'comp_luna', name: 'Luna Support Technologies', product: 'Luna Support', category: 'Customer Service & Help', description: 'Enterprise 24/7 dedicated customer assistance and support software.' }
-        ];
-
-        const registeredUsers = db.getUsers().filter(u => u.role === 'company' && u.companyName);
-        const dynamicCompanies = registeredUsers.map(u => ({
-          id: u.id,
-          name: u.companyName,
-          product: u.companyName,
-          category: 'Enterprise Solutions',
-          description: `Registered business verified on FeedbackPro platform. Official contact: ${u.email}`
-        }));
-
-        const allCompanies = [...defaultCompanies];
-        for (const dc of dynamicCompanies) {
-          if (!allCompanies.some(c => c.name.toLowerCase() === dc.name.toLowerCase())) {
-            allCompanies.push(dc);
-          }
-        }
-
-        return sendJson(res, 200, {
-          success: true,
-          companies: allCompanies
-        });
-      }
-
       // Reviews API
       if (pathname === '/api/reviews') {
         if (method === 'GET') return reviewsRoutes.handleGetReviews(req, res, query);
