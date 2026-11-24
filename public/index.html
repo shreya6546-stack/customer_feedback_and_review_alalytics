@@ -180,23 +180,5 @@
         </div>
       </div>
     </main>
-
-    <script src="/js/storage.js"></script>
-    <script>
-      // If user is already logged in, enhance buttons to go to their portal
-      document.addEventListener('DOMContentLoaded', () => {
-        const auth = typeof ensureAuth === 'function' ? ensureAuth() : null;
-        if (auth && auth.isLoggedIn) {
-          const targetUrl = auth.role === 'customer' ? '/customer.html' : '/dashboard.html';
-          const topActions = document.querySelector('.welcome-top-actions');
-          if (topActions) {
-            topActions.innerHTML = `
-              <span style="font-size: 13px; color: var(--text-muted); font-weight: 500;">Hi, ${auth.name || 'User'}</span>
-              <a href="${targetUrl}" class="welcome-signup-btn">Go to ${auth.role === 'customer' ? 'Customer Portal' : 'Dashboard'} &rarr;</a>
-            `;
-          }
-        }
-      });
-    </script>
   </body>
 </html>
