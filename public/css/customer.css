@@ -608,3 +608,259 @@ body.theme-dark .customer-hero {
   }
 }
 
+/* ==========================================================================
+   Registered Businesses & Company Search Styles
+   ========================================================================== */
+
+.portal-businesses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.business-card {
+  background: var(--surface, #ffffff);
+  border: 1.5px solid rgba(89, 53, 245, 0.12);
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 20px rgba(23, 20, 63, 0.04);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.business-card:hover {
+  transform: translateY(-3px);
+  border-color: #5935F5;
+  box-shadow: 0 12px 30px rgba(89, 53, 245, 0.12);
+}
+
+.business-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.business-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #5935F5 0%, #8057FF 100%);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  flex-shrink: 0;
+  box-shadow: 0 6px 14px rgba(89, 53, 245, 0.25);
+}
+
+.business-identity {
+  flex: 1;
+  min-width: 0;
+}
+
+.business-name-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.business-name {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text, #17143F);
+  margin: 0;
+}
+
+.business-verified-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  background: #EEF8F1;
+  color: #12824C;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.2rem 0.55rem;
+  border-radius: 20px;
+}
+
+.business-category {
+  display: block;
+  font-size: 0.8rem;
+  color: #5935F5;
+  font-weight: 600;
+  margin-top: 0.2rem;
+}
+
+.business-desc {
+  font-size: 0.88rem;
+  color: var(--text-muted, #5A5579);
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+  flex-grow: 1;
+}
+
+.business-stats-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 0.9rem;
+  background: #F9F8FE;
+  border-radius: 12px;
+  margin-bottom: 1.25rem;
+}
+
+.business-rating {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #17143F;
+}
+
+.business-rating .stars-gold {
+  color: #FFB800;
+  font-size: 0.95rem;
+}
+
+.business-reviews-count {
+  font-size: 0.8rem;
+  color: var(--text-muted, #5A5579);
+  font-weight: 500;
+}
+
+.business-actions {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.business-actions .primary-btn,
+.business-actions .secondary-btn {
+  flex: 1;
+  justify-content: center;
+  padding: 0.55rem 0.75rem;
+  font-size: 0.82rem;
+  border-radius: 10px;
+  text-decoration: none;
+}
+
+/* ==========================================================================
+   Review Actions: Edit & Delete (for Customer's Own Reviews)
+   ========================================================================== */
+
+.portal-card-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding-top: 0.9rem;
+  border-top: 1px dashed rgba(89, 53, 245, 0.15);
+}
+
+.portal-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.38rem 0.75rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.portal-action-edit {
+  background: #F2EEFF;
+  color: #5935F5;
+  border-color: rgba(89, 53, 245, 0.2);
+}
+
+.portal-action-edit:hover {
+  background: #5935F5;
+  color: #ffffff;
+  border-color: #5935F5;
+}
+
+.portal-action-delete {
+  background: #FFF1F0;
+  color: #D32029;
+  border-color: rgba(211, 32, 41, 0.2);
+}
+
+.portal-action-delete:hover {
+  background: #D32029;
+  color: #ffffff;
+  border-color: #D32029;
+}
+
+/* ==========================================================================
+   Customer Edit Review Modal
+   ========================================================================== */
+
+.customer-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(23, 20, 63, 0.6);
+  backdrop-filter: blur(6px);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.25s ease;
+}
+
+.customer-modal.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.customer-modal-card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 2rem;
+  width: 90%;
+  max-width: 540px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 24px 60px rgba(23, 20, 63, 0.25);
+  transform: scale(0.95);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.customer-modal.open .customer-modal-card {
+  transform: scale(1);
+}
+
+.customer-modal-close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #F2EEFF;
+  border: none;
+  color: #17143F;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.customer-modal-close:hover {
+  background: #E4DEFE;
+}
+
+

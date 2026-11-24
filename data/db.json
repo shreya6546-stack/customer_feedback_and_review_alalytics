@@ -1,6 +1,6 @@
 {
-  "version": 1795515647246,
-  "lastModified": "2026-11-24T10:20:47.246Z",
+  "version": 1795516407009,
+  "lastModified": "2026-11-24T10:33:27.009Z",
   "reviews": [
     {
       "id": "r1",
@@ -761,6 +761,21 @@
     }
   ],
   "notifications": [
+    {
+      "id": "notif-mwuk3yco-380ce29d",
+      "title": "Response Sent",
+      "message": "Replied to Marcus's review for SmartHub Pro.",
+      "unread": true,
+      "createdAt": "2026-11-24T10:33:26.952Z"
+    },
+    {
+      "id": "notif-mwuk3ycg-6759e8e9",
+      "reviewId": "r-mwuk3ycg-784a021b",
+      "title": "New Customer Review",
+      "message": "Marcus Vance gave a 5-star review for SmartHub Pro.",
+      "unread": true,
+      "createdAt": "2026-11-24T10:33:26.944Z"
+    },
     {
       "id": "notif-mwujno4b-a9fae161",
       "title": "Response Sent",

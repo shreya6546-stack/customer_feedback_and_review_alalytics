@@ -8,17 +8,18 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-    <link rel="stylesheet" href="css/main.css" />
-    <link rel="stylesheet" href="css/customer.css" />
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/customer.css" />
+    <link rel="stylesheet" href="/css/auth-redesign.css" />
   </head>
   <body data-page="customer" class="theme-light">
     <div class="customer-portal-shell">
       <header class="customer-topbar">
         <div class="customer-brand">
-          <a href="customer.html" class="customer-brand-link" aria-label="FeedbackPro Customer Portal">
+          <a href="/customer.html" class="customer-brand-link" aria-label="FeedbackPro Customer Portal">
             <img
               class="brand-logo"
-              src="assets/images/FeedbackPro%20Analytics%20Logo.png"
+              src="/assets/images/FeedbackPro%20Analytics%20Logo.png"
               alt="FeedbackPro - Collect, Analyze, Improve"
               width="200"
               height="64"
@@ -28,9 +29,14 @@
         </div>
 
         <nav class="portal-nav-tabs" aria-label="Customer portal navigation">
-          <button type="button" class="portal-tab active" data-portal-tab="browse">
+          <button type="button" class="portal-tab active" data-portal-tab="businesses">
+            <i class="fa-solid fa-building"></i>
+            <span>Browse Businesses</span>
+            <span class="portal-tab-count" id="portalBusinessesCount">6</span>
+          </button>
+          <button type="button" class="portal-tab" data-portal-tab="browse">
             <i class="fa-solid fa-comments"></i>
-            <span>Browse Reviews</span>
+            <span>Community Reviews</span>
             <span class="portal-tab-count" id="portalBrowseCount">0</span>
           </button>
           <button type="button" class="portal-tab" data-portal-tab="write">
@@ -45,7 +51,7 @@
         </nav>
 
         <div class="customer-header-actions">
-          <a href="index.html" class="secondary-btn small portal-admin-link" title="Switch to Admin Portal">
+          <a href="/dashboard.html" class="secondary-btn small portal-admin-link" title="Switch to Admin Portal">
             <i class="fa-solid fa-gauge-high"></i>
             <span>Admin Portal</span>
           </a>
@@ -60,12 +66,15 @@
         <section class="customer-hero card">
           <div class="customer-hero-copy">
             <p class="eyebrow">Customer Voice &amp; Reviews</p>
-            <h1 id="portalHeroTitle">Share your experience &amp; explore verified reviews</h1>
+            <h1 id="portalHeroTitle">Browse Businesses &amp; Share Actionable Feedback</h1>
             <p id="portalHeroSubtitle">
-              Rate our products, share detailed feedback, and track official responses from our team.
+              Search verified companies, submit ratings &amp; reviews, and manage your feedback history in one place.
             </p>
             <div class="customer-hero-cta">
-              <button type="button" class="primary-btn" id="heroWriteReviewBtn">
+              <button type="button" class="primary-btn" id="heroBrowseBizBtn">
+                <i class="fa-solid fa-building"></i> Explore Businesses
+              </button>
+              <button type="button" class="secondary-btn" id="heroWriteReviewBtn">
                 <i class="fa-solid fa-star"></i> Write a Review
               </button>
               <button type="button" class="secondary-btn" id="heroMyReviewsBtn">
@@ -76,8 +85,30 @@
           <div class="customer-hero-stats" id="portalHeroStats"></div>
         </section>
 
-        <!-- View 1: Browse Community Reviews -->
-        <section class="portal-view active" id="portalBrowseView">
+        <!-- View 1: Browse & Search Registered Businesses -->
+        <section class="portal-view active" id="portalBusinessesView">
+          <div class="card portal-filters-card">
+            <div class="portal-filter-grid">
+              <div class="portal-search-wrap">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="companySearchInput" placeholder="Search registered companies by name, category, or service..." />
+              </div>
+              <select id="companyCategoryFilter" aria-label="Filter companies by category">
+                <option value="all">All industries</option>
+              </select>
+              <select id="companySortFilter" aria-label="Sort companies">
+                <option value="rating">Highest rating</option>
+                <option value="reviews">Most reviewed</option>
+                <option value="name">Alphabetical (A-Z)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="portal-businesses-grid" id="portalBusinessesGrid"></div>
+        </section>
+
+        <!-- View 2: Browse Community Reviews -->
+        <section class="portal-view" id="portalBrowseView">
           <div class="portal-product-strip" id="portalProductStrip"></div>
 
           <div class="card portal-filters-card">
@@ -115,7 +146,7 @@
           <div class="pagination portal-pagination card" id="portalPagination"></div>
         </section>
 
-        <!-- View 2: Write a New Review -->
+        <!-- View 3: Write a New Review -->
         <section class="portal-view" id="portalWriteView">
           <div class="card portal-write-card">
             <div class="section-header compact-header">
@@ -137,16 +168,9 @@
                   <input id="portalCustomerEmail" type="email" placeholder="you@example.com" required />
                 </div>
                 <div class="input-group">
-                  <label for="portalProductSelect">Product or service</label>
+                  <label for="portalProductSelect">Select business / product</label>
                   <select id="portalProductSelect" required>
-                    <option value="">Select a product</option>
-                    <option value="SmartHub Pro">SmartHub Pro</option>
-                    <option value="InsightFlow">InsightFlow</option>
-                    <option value="Nexa CRM">Nexa CRM</option>
-                    <option value="DeliverLoop">DeliverLoop</option>
-                    <option value="PulseDesk">PulseDesk</option>
-                    <option value="Luna Support">Luna Support</option>
-                    <option value="__custom__">Other product...</option>
+                    <option value="">Select a registered business</option>
                   </select>
                 </div>
                 <div class="input-group">
@@ -228,12 +252,12 @@
           </div>
         </section>
 
-        <!-- View 3: My Reviews -->
+        <!-- View 4: My Reviews (With Edit and Delete Capabilities) -->
         <section class="portal-view" id="portalMineView">
           <div class="card my-reviews-lookup-bar" id="myReviewsLookupBar">
             <div class="lookup-info">
               <strong><i class="fa-solid fa-envelope-open-text"></i> Your review activity</strong>
-              <p id="myReviewsEmailStatus">Enter your email address below to view reviews you submitted and any team responses.</p>
+              <p id="myReviewsEmailStatus">View, edit, or delete reviews you submitted and follow team responses.</p>
             </div>
             <form id="myReviewsLookupForm" class="lookup-form">
               <input id="myReviewsEmailInput" type="email" placeholder="Enter your email (e.g. ava@example.com)" />
@@ -247,13 +271,57 @@
       </main>
     </div>
 
+    <!-- Edit Review Modal -->
+    <div class="customer-modal" id="customerEditModal" aria-hidden="true">
+      <div class="customer-modal-card">
+        <button type="button" class="customer-modal-close" id="closeCustomerEditModal" aria-label="Close modal">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="section-header compact-header" style="margin-bottom: 1.25rem;">
+          <p class="eyebrow">Update Feedback</p>
+          <h2>Edit Your Review</h2>
+          <p class="section-description">Update your rating, review title, or feedback text for <strong id="editModalProduct"></strong>.</p>
+        </div>
+
+        <form id="customerEditForm">
+          <input type="hidden" id="editReviewId" />
+
+          <div class="rating-panel" style="margin-bottom: 1.25rem;">
+            <label style="font-size: 0.88rem; font-weight: 600; display: block; margin-bottom: 0.4rem;">Rating</label>
+            <div class="star-rating" id="editStarRating">
+              <button type="button" class="star-btn" data-value="1"><i class="fa-regular fa-star"></i></button>
+              <button type="button" class="star-btn" data-value="2"><i class="fa-regular fa-star"></i></button>
+              <button type="button" class="star-btn" data-value="3"><i class="fa-regular fa-star"></i></button>
+              <button type="button" class="star-btn" data-value="4"><i class="fa-regular fa-star"></i></button>
+              <button type="button" class="star-btn" data-value="5"><i class="fa-regular fa-star"></i></button>
+            </div>
+            <input type="hidden" id="editRatingValue" value="5" />
+          </div>
+
+          <div class="input-group" style="margin-bottom: 1rem;">
+            <label for="editReviewTitle" style="font-size: 0.88rem; font-weight: 600; display: block; margin-bottom: 0.35rem;">Review Title</label>
+            <input id="editReviewTitle" type="text" maxlength="80" required style="width: 100%; padding: 0.75rem; border: 1.5px solid #E8E5F5; border-radius: 10px;" />
+          </div>
+
+          <div class="input-group" style="margin-bottom: 1.5rem;">
+            <label for="editReviewText" style="font-size: 0.88rem; font-weight: 600; display: block; margin-bottom: 0.35rem;">Detailed Feedback</label>
+            <textarea id="editReviewText" rows="4" maxlength="500" required style="width: 100%; padding: 0.75rem; border: 1.5px solid #E8E5F5; border-radius: 10px; font-family: inherit;"></textarea>
+          </div>
+
+          <div class="form-actions" style="display: flex; gap: 0.75rem; justify-content: flex-end;">
+            <button type="button" class="secondary-btn" id="cancelEditModalBtn">Cancel</button>
+            <button type="submit" class="primary-btn"><i class="fa-solid fa-check"></i> Save Changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
     <div class="toast-container" id="toastContainer"></div>
 
-    <script src="js/sentiment.js"></script>
-    <script src="js/storage.js"></script>
-    <script src="js/analytics.js"></script>
-    <script src="js/customer.js"></script>
-    <script src="js/app.js"></script>
+    <script src="/js/sentiment.js"></script>
+    <script src="/js/storage.js"></script>
+    <script src="/js/analytics.js"></script>
+    <script src="/js/customer.js"></script>
+    <script src="/js/app.js"></script>
   </body>
 </html>
-
