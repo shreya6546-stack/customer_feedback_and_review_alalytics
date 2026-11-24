@@ -27,6 +27,7 @@ for (const folder of folders) {
 const files = [
   'welcome.html',
   'index.html',
+  'dashboard.html',
   'login.html',
   'signup.html',
   'signup-customer.html',

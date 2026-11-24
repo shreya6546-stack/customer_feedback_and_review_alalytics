@@ -187,7 +187,7 @@ async function runTests() {
           user: { id: 'admin_1', name: 'Alex Morgan', email: 'alex@feedbackpro.io', role: 'admin' }
         }));
       });
-      await adminPage.goto(`${BASE_URL}/index.html`);
+      await adminPage.goto(`${BASE_URL}/dashboard.html`);
       await adminPage.waitForLoadState('networkidle');
 
       // Navigate to Reviews table

@@ -200,7 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       showToast('Thank you! Your feedback has been submitted successfully.', 'success');
       setTimeout(() => {
-        window.location.href = isAdminSession ? 'index.html' : 'customer.html';
+        window.location.href = isAdminSession ? 'dashboard.html' : 'customer.html';
       }, 950);
     }, 750);
   });

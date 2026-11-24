@@ -3,677 +3,200 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FeedbackPro Dashboard</title>
+    <title>FeedbackPro — Customer Feedback & Review Analytics Tool</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-    <link rel="stylesheet" href="/css/main.css" />
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <link rel="stylesheet" href="/css/auth-redesign.css" />
   </head>
-  <body data-page="dashboard" class="theme-light">
-    <div class="app-shell">
-      <aside class="sidebar" id="sidebar">
-        <div class="brand-wrap">
-          <img
-            class="brand-logo"
-            src="/assets/images/FeedbackPro%20Analytics%20Logo.png"
-            alt="FeedbackPro - Collect, Analyze, Improve"
-            width="240"
-            height="80"
-          />
-          <button class="icon-btn sidebar-close-btn" id="sidebarCloseBtn" type="button" aria-label="Close sidebar">
-            <i class="fa-solid fa-xmark" aria-hidden="true"></i>
-          </button>
-        </div>
+  <body class="auth-page" data-page="welcome">
+    <!-- Ambient Wavy Background -->
+    <div class="auth-bg-ambient">
+      <div class="wave-top"></div>
+      <div class="wave-bottom"></div>
+      <div class="grid-dots"></div>
+    </div>
 
-        <nav class="sidebar-nav">
-          <div class="nav-group">
-            <span class="nav-group-label">Workspace</span>
-            <button class="nav-item active" data-target="dashboard-view">
-              <i class="fa-solid fa-gauge-high"></i>
-              <span>Overview</span>
-            </button>
-            <button class="nav-item" data-target="reviews-view">
-              <i class="fa-solid fa-star"></i>
-              <span>Reviews</span>
-              <span class="nav-count-pill hidden" id="sidebarPendingReviewsCount" title="Reviews awaiting admin response">0</span>
-            </button>
-            <button class="nav-item" data-target="complaints-view">
-              <i class="fa-solid fa-life-ring"></i>
-              <span>Complaint tracking</span>
-            </button>
-            <a class="nav-item portal-nav-link" href="customer.html" title="Open Customer Feedback Portal">
-              <i class="fa-solid fa-store"></i>
-              <span>Customer Portal</span>
-              <span class="portal-badge-sm"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
-            </a>
-          </div>
-          <div class="nav-group">
-            <span class="nav-group-label">Insights</span>
-            <button class="nav-item" data-target="sentiment-view">
-              <i class="fa-solid fa-brain"></i>
-              <span>Sentiment</span>
-            </button>
-            <button class="nav-item" data-target="analytics-view">
-              <i class="fa-solid fa-chart-column"></i>
-              <span>Analytics</span>
-            </button>
-            <button class="nav-item" data-target="insights-view">
-              <i class="fa-solid fa-magnifying-glass-chart"></i>
-              <span>Customer insights</span>
-            </button>
-            <button class="nav-item" data-target="copilot-view">
-              <i class="fa-solid fa-wand-magic-sparkles"></i>
-              <span>Insights Copilot</span>
-            </button>
-            <button class="nav-item" data-target="data-view">
-              <i class="fa-solid fa-file-import"></i>
-              <span>Import data</span>
-            </button>
-            <button class="nav-item" data-target="reports-view">
-              <i class="fa-solid fa-file-lines"></i>
-              <span>Reports</span>
-            </button>
-          </div>
-          <div class="nav-group">
-            <span class="nav-group-label">Workspace settings</span>
-            <button class="nav-item" data-target="notifications-view">
-              <i class="fa-solid fa-bell"></i>
-              <span>Notifications</span>
-            </button>
-            <button class="nav-item" data-target="settings-view">
-              <i class="fa-solid fa-gear"></i>
-              <span>Settings</span>
-            </button>
-          </div>
-        </nav>
-        <div class="sidebar-footer">
-          <span class="workspace-indicator pulse"></span>
-          <span><strong>FeedbackPro</strong><small>Enterprise Workspace • v2.4</small></span>
-        </div>
-      </aside>
-
-      <main class="main-panel">
-        <header class="topbar">
-          <div class="topbar-left">
-            <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fa-solid fa-bars"></i></button>
-            <div>
-              <div class="breadcrumbs">Home / Overview</div>
-              <h1 id="pageTitle">Overview</h1>
+    <!-- Main Centered Welcome Card (Page 1) -->
+    <main class="welcome-container">
+      <div class="welcome-card">
+        <!-- Header: Logo on left, Login & Sign Up on right -->
+        <header class="welcome-topbar">
+          <a href="/" class="brand-header-logo" aria-label="FeedbackPro Home">
+            <div class="brand-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="3" y="13" width="4" height="8" rx="1.5" fill="white" />
+                <rect x="10" y="8" width="4" height="13" rx="1.5" fill="white" />
+                <rect x="17" y="3" width="4" height="18" rx="1.5" fill="white" />
+              </svg>
             </div>
-          </div>
-
-          <div class="topbar-actions">
-            <a href="customer.html" class="secondary-btn small portal-header-btn" title="Open Customer Feedback Portal">
-              <i class="fa-solid fa-store"></i>
-              <span>Customer Portal</span>
-            </a>
-
-            <div class="searchbox">
-              <i class="fa-solid fa-magnifying-glass"></i>
-              <input id="globalSearch" type="text" placeholder="Search feedback, customers, pr..." />
+            <div class="brand-text-wrap">
+              <span class="brand-name">FeedbackPro</span>
             </div>
+          </a>
 
-            <div class="notification-wrapper">
-              <button class="icon-btn" id="notificationBtn" aria-label="Notifications">
-                <i class="fa-solid fa-bell"></i>
-                <span class="badge notification-badge" id="notificationBadge">2</span>
-              </button>
-              <div class="notification-dropdown" id="notificationDropdown">
-                <div class="dropdown-header">
-                  <h3>Notifications</h3>
-                  <button class="text-btn small" id="markAllReadBtn">Mark all read</button>
-                </div>
-                <div id="notificationList" class="notification-list"></div>
-              </div>
-            </div>
-
-            <button class="icon-btn" id="themeToggle" aria-label="Toggle theme">
-              <i class="fa-solid fa-moon"></i>
-            </button>
-
-            <div class="profile-menu">
-              <div class="profile-trigger" id="profileTrigger">
-                <div class="avatar" id="profileAvatar">A</div>
-                <div class="profile-meta">
-                  <strong id="profileName">Admin</strong>
-                  <small>Workspace owner</small>
-                </div>
-              </div>
-              <div class="profile-dropdown" id="profileDropdown">
-                <a href="#settings-view" class="dropdown-item"><i class="fa-solid fa-user"></i> Profile</a>
-                <a href="#settings-view" class="dropdown-item"><i class="fa-solid fa-gear"></i> Settings</a>
-                <button class="dropdown-item text-danger" id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
-              </div>
-            </div>
+          <div class="welcome-top-actions">
+            <a href="/login" class="welcome-login-link">Login</a>
+            <a href="/signup" class="welcome-signup-btn">Sign Up</a>
           </div>
         </header>
 
-        <div class="page-container">
-          <section class="page-view active" id="dashboard-view">
-            <div class="page-intro">
-              <p class="eyebrow">Workspace overview</p>
-              <h2>Feedback performance</h2>
-              <p>Monitor customer experience and track feedback across your products.</p>
+        <!-- Hero Section: Left content, Right analytics graphics -->
+        <div class="welcome-hero-grid">
+          <!-- Left Column -->
+          <div class="welcome-content-col">
+            <h1 class="welcome-main-heading">
+              Customer Feedback &amp;<br />
+              Review <span class="highlight-purple">Analytics</span> Tool
+            </h1>
+
+            <h2 class="welcome-subheading">
+              Turn Customer Feedback into Actionable Insights
+            </h2>
+
+            <p class="welcome-desc">
+              Collect, analyze and understand reviews from your customers and grow your business.
+            </p>
+
+            <div class="welcome-hero-buttons">
+              <a href="/login" class="btn-pill-primary">
+                <span>Login</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+              <a href="/signup" class="btn-pill-outline">
+                <span>Sign Up</span>
+              </a>
             </div>
-            <div class="welcome-card">
-              <div class="welcome-message">
-                <div>
-                  <p class="eyebrow">Reporting period</p>
-                  <h2>Good afternoon, Admin <span class="wave-emoji">👋</span></h2>
-                  <p>30 customer reviews analyzed in this period • 3.5/5.0 average rating</p>
+
+            <!-- Bottom Feature Highlights with Dividers -->
+            <div class="welcome-features-bar">
+              <div class="feature-pill-item">
+                <div class="feature-pill-icon">
+                  <i class="fa-solid fa-star"></i>
                 </div>
+                <span class="feature-pill-title">Sentiment Analysis</span>
               </div>
-              <div class="date-filter-wrap">
-                <label for="dateRangeFilter">Date range</label>
-                <select id="dateRangeFilter">
-                  <option value="today">Today</option>
-                  <option value="7">Last 7 days</option>
-                  <option value="30">Last 30 days</option>
-                  <option value="90" selected>Last 90 days</option>
-                  <option value="custom">Custom date range</option>
-                </select>
+
+              <div class="feature-divider"></div>
+
+              <div class="feature-pill-item">
+                <div class="feature-pill-icon">
+                  <i class="fa-solid fa-chart-simple"></i>
+                </div>
+                <span class="feature-pill-title">Review Tracking</span>
               </div>
-              <div class="date-filter-wrap">
-                <label for="dashboardCategoryFilter">Category</label>
-                <select id="dashboardCategoryFilter">
-                  <option value="all">All categories</option>
-                </select>
+
+              <div class="feature-divider"></div>
+
+              <div class="feature-pill-item">
+                <div class="feature-pill-icon">
+                  <i class="fa-regular fa-lightbulb"></i>
+                </div>
+                <span class="feature-pill-title">Business Insights</span>
               </div>
-              <div class="custom-date-range" id="customDateRange" hidden>
-                <label for="customDateFrom">From</label>
-                <input id="customDateFrom" type="date" />
-                <label for="customDateTo">To</label>
-                <input id="customDateTo" type="date" />
+            </div>
+          </div>
+
+          <!-- Right Column: Rich Floating SaaS Analytics Illustration -->
+          <div class="welcome-illustration-col" aria-hidden="true">
+            <!-- 1. Customer Review Card -->
+            <div class="mock-card mock-review-card">
+              <div class="mock-avatar">
+                <i class="fa-solid fa-user"></i>
+              </div>
+              <div class="mock-review-content">
+                <div class="mock-stars">
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                </div>
+                <div class="mock-skeleton-line" style="width: 88%; margin-bottom: 5px;"></div>
+                <div class="mock-skeleton-line" style="width: 60%;"></div>
+              </div>
+              <div class="mock-thumbs-badge">
+                <i class="fa-solid fa-thumbs-up"></i>
               </div>
             </div>
 
-            <div class="kpi-grid" id="kpiGrid"></div>
-
-            <div class="dashboard-section-heading">
-              <div>
-                <h3>Feedback overview</h3>
-                <p>Review trends and customer sentiment at a glance.</p>
-              </div>
-              <button class="text-btn dashboard-nav-link dashboard-analytics-link" data-target="analytics-view">
-                Explore analytics <i class="fa-solid fa-arrow-right"></i>
-              </button>
-            </div>
-
-            <div class="charts-grid dashboard-charts">
-              <div class="card chart-card">
-                <div class="card-header">
-                  <div>
-                    <h3>Review trends</h3>
-                    <p class="chart-description">Monthly feedback volume</p>
-                  </div>
+            <!-- 2. Dual Charts Row: Trend line & Donut -->
+            <div class="mock-chart-row">
+              <!-- Line Chart Card -->
+              <div class="mock-card mock-line-card">
+                <div class="mock-chart-header">
+                  <span>Sentiment Trend</span>
+                  <span class="mock-chart-tag"><i class="fa-solid fa-arrow-trend-up"></i> +24%</span>
                 </div>
-                <div class="chart-wrap">
-                  <canvas id="trendChart"></canvas>
-                </div>
+                <svg viewBox="0 0 160 65" style="width: 100%; height: 55px; overflow: visible;">
+                  <defs>
+                    <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#5935F5" stop-opacity="0.28" />
+                      <stop offset="100%" stop-color="#5935F5" stop-opacity="0.0" />
+                    </linearGradient>
+                  </defs>
+                  <path d="M 0,55 Q 35,42 65,30 T 115,18 T 160,8 L 160,65 L 0,65 Z" fill="url(#chartGrad)" />
+                  <path d="M 0,55 Q 35,42 65,30 T 115,18 T 160,8" fill="none" stroke="#5935F5" stroke-width="2.5" stroke-linecap="round" />
+                  <circle cx="65" cy="30" r="3.5" fill="#5935F5" />
+                  <circle cx="115" cy="18" r="3.5" fill="#5935F5" />
+                  <circle cx="160" cy="8" r="4" fill="#8057FF" stroke="#FFFFFF" stroke-width="2" />
+                </svg>
               </div>
 
-              <div class="card chart-card">
-                <div class="card-header">
-                  <div>
-                    <h3>Sentiment distribution</h3>
-                    <p class="chart-description">How customers feel about your service</p>
-                  </div>
-                </div>
-                <div class="chart-wrap donut-wrap">
-                  <canvas id="sentimentChart"></canvas>
-                </div>
-              </div>
-
-              <div class="card chart-card">
-                <div class="card-header">
-                  <div>
-                    <h3>Rating distribution</h3>
-                    <p class="chart-description">Customer ratings breakdown</p>
-                  </div>
-                </div>
-                <div class="chart-wrap">
-                  <canvas id="ratingChart"></canvas>
-                </div>
+              <!-- Donut Chart Card -->
+              <div class="mock-card mock-donut-card">
+                <svg viewBox="0 0 76 76" style="width: 68px; height: 68px; transform: rotate(-90deg);">
+                  <!-- Background ring -->
+                  <circle cx="38" cy="38" r="28" fill="none" stroke="#F1EDFD" stroke-width="10" />
+                  <!-- Positive segment (purple #5935F5) -->
+                  <circle cx="38" cy="38" r="28" fill="none" stroke="#5935F5" stroke-width="10" stroke-dasharray="125 180" stroke-linecap="round" />
+                  <!-- Neutral segment (violet #8057FF) -->
+                  <circle cx="38" cy="38" r="28" fill="none" stroke="#8057FF" stroke-width="10" stroke-dasharray="35 180" stroke-dashoffset="-128" />
+                </svg>
+                <div style="font-size: 11px; font-weight: 700; color: #17143F; margin-top: 4px;">78% Positive</div>
               </div>
             </div>
 
-            <div class="dashboard-bottom-grid">
-              <div class="card">
-                <div class="card-header with-action">
-                  <div>
-                    <h3>Recent reviews</h3>
-                    <p class="chart-description">Latest feedback from your customers</p>
-                  </div>
-                  <button class="text-btn dashboard-nav-link" data-target="reviews-view">View all <i class="fa-solid fa-arrow-right"></i></button>
-                </div>
-                <div class="recent-review-table" role="table" aria-label="Recent customer reviews">
-                  <div class="recent-review-head" role="row">
-                    <span role="columnheader">Customer</span>
-                    <span role="columnheader">Rating</span>
-                    <span role="columnheader">Sentiment</span>
-                    <span role="columnheader">Date</span>
-                  </div>
-                  <div id="recentReviewsList" class="recent-review-body" role="rowgroup"></div>
-                </div>
+            <!-- 3. Customer Satisfaction Progress Card -->
+            <div class="mock-card mock-satisfaction-card">
+              <div class="mock-smile-avatar">
+                <i class="fa-regular fa-face-smile"></i>
               </div>
-
-              <div class="dashboard-side-stack">
-                <div class="card">
-                  <div class="card-header">
-                    <div>
-                      <h3>Business insights</h3>
-                      <p class="chart-description">Patterns worth your attention</p>
-                    </div>
-                  </div>
-                  <div id="insightsList" class="insights-list"></div>
+              <div class="mock-progress-bars">
+                <div style="display: flex; justify-content: space-between; font-size: 11px; font-weight: 600; color: #17143F;">
+                  <span>Satisfaction Score</span>
+                  <span style="color: #5935F5;">4.9 / 5.0</span>
                 </div>
-
-                <div class="analytics-promo">
-                  <div class="promo-icon"><i class="fa-solid fa-arrow-trend-up"></i></div>
-                  <p class="promo-eyebrow">Make every insight count</p>
-                  <h3>Turn feedback into growth</h3>
-                  <p>Explore patterns across ratings, products, and customer feedback.</p>
-                  <button class="primary-btn dashboard-nav-link" data-target="analytics-view">
-                    View analytics <i class="fa-solid fa-arrow-right"></i>
-                  </button>
-                  <div class="promo-bars" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+                <div class="mock-progress-bar-bg">
+                  <div class="mock-progress-fill-1"></div>
+                </div>
+                <div class="mock-progress-bar-bg" style="width: 85%;">
+                  <div class="mock-progress-fill-2"></div>
                 </div>
               </div>
             </div>
-          </section>
-
-          <section class="page-view" id="reviews-view">
-            <div class="section-header">
-              <div>
-                <p class="eyebrow">Operations</p>
-                <h2>Review Management</h2>
-                <p class="section-description">Search, triage, and respond to customer feedback.</p>
-              </div>
-              <button class="primary-btn" id="exportReviewsBtn"><i class="fa-solid fa-download"></i> Export CSV</button>
-            </div>
-
-            <div class="quick-filter-chips" id="quickFilterChips">
-              <button type="button" class="chip active" data-filter="all">
-                <i class="fa-solid fa-list-check"></i> All Reviews <span class="chip-count" id="countAllReviews">0</span>
-              </button>
-              <button type="button" class="chip" data-filter="pending">
-                <i class="fa-solid fa-clock"></i> Needs Reply <span class="chip-count chip-amber" id="countPendingReviews">0</span>
-              </button>
-              <button type="button" class="chip" data-filter="positive">
-                <i class="fa-solid fa-face-smile"></i> Positive <span class="chip-count chip-green" id="countPositiveReviews">0</span>
-              </button>
-              <button type="button" class="chip" data-filter="negative">
-                <i class="fa-solid fa-triangle-exclamation"></i> Critical <span class="chip-count chip-red" id="countNegativeReviews">0</span>
-              </button>
-              <button type="button" class="chip" data-filter="fiveStar">
-                <i class="fa-solid fa-star"></i> 5 Stars <span class="chip-count chip-blue" id="countFiveStarReviews">0</span>
-              </button>
-            </div>
-
-            <div class="filters-panel card">
-              <div class="filter-grid">
-                <input type="text" id="reviewSearchInput" placeholder="Search by customer or review text" />
-                <select id="ratingFilter">
-                  <option value="all">All ratings</option>
-                  <option value="5">5 Stars</option>
-                  <option value="4">4 Stars</option>
-                  <option value="3">3 Stars</option>
-                  <option value="2">2 Stars</option>
-                  <option value="1">1 Star</option>
-                </select>
-                <select id="sentimentFilter">
-                  <option value="all">All sentiments</option>
-                  <option value="Positive">Positive</option>
-                  <option value="Negative">Negative</option>
-                  <option value="Neutral">Neutral</option>
-                </select>
-                <select id="productFilter">
-                  <option value="all">All products</option>
-                </select>
-                <input type="date" id="reviewDateFilter" />
-                <select id="reviewSortFilter" aria-label="Sort reviews">
-                  <option value="newest">Newest first</option>
-                  <option value="oldest">Oldest first</option>
-                  <option value="rating-high">Highest rating</option>
-                  <option value="rating-low">Lowest rating</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="table-card card">
-              <div class="table-wrap">
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Customer</th>
-                      <th>Product</th>
-                      <th>Rating</th>
-                      <th>Review</th>
-                      <th>Sentiment</th>
-                      <th>Date</th>
-                      <th>Response</th>
-                      <th>Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody id="reviewsTableBody"></tbody>
-                </table>
-              </div>
-              <div class="pagination" id="reviewPagination"></div>
-            </div>
-          </section>
-
-          <section class="page-view" id="sentiment-view">
-            <div class="section-header">
-              <div>
-                <p class="eyebrow">AI-style rule-based</p>
-                <h2>Sentiment Analysis</h2>
-                <p class="section-description">Understand the tone and recurring language in customer feedback.</p>
-              </div>
-            </div>
-            <div class="card sentiment-summary">
-              <div class="sentiment-stat">
-                <span>Positive</span>
-                <strong id="positivePercent">0%</strong>
-              </div>
-              <div class="sentiment-stat">
-                <span>Negative</span>
-                <strong id="negativePercent">0%</strong>
-              </div>
-              <div class="sentiment-stat">
-                <span>Neutral</span>
-                <strong id="neutralPercent">0%</strong>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-header">
-                <h3>Keyword Insights</h3>
-              </div>
-              <div class="keyword-lists">
-                <div>
-                  <h4>Most common positive terms</h4>
-                  <div id="positiveKeywords" class="tag-cloud"></div>
-                </div>
-                <div>
-                  <h4>Most common negative terms</h4>
-                  <div id="negativeKeywords" class="tag-cloud"></div>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section class="page-view" id="analytics-view">
-            <div class="section-header">
-              <div>
-                <p class="eyebrow">Explore the details</p>
-                <h2>Analytics</h2>
-                <p class="section-description">Track volume, satisfaction, sentiment, product performance, and customer themes.</p>
-              </div>
-            </div>
-            <div class="analytics-kpi-grid" id="analyticsKpiGrid"></div>
-            <div class="card chart-card analytics-trend-card">
-              <div class="card-header">
-                <div>
-                  <h3>Feedback volume</h3>
-                  <p class="chart-description">Monthly review count from the selected dataset</p>
-                </div>
-              </div>
-              <div class="chart-wrap"><canvas id="analyticsTrendChart"></canvas></div>
-            </div>
-            <div class="charts-grid analytics-charts">
-              <div class="card chart-card">
-                <div class="card-header">
-                  <div>
-                    <h3>Product Performance</h3>
-                    <p class="chart-description">Average customer rating by product</p>
-                  </div>
-                </div>
-                <div class="chart-wrap">
-                  <canvas id="productChart"></canvas>
-                </div>
-              </div>
-
-              <div class="card chart-card">
-                <div class="card-header">
-                  <div>
-                    <h3>Feedback Categories</h3>
-                    <p class="chart-description">Review volume by customer feedback category</p>
-                  </div>
-                </div>
-                <div class="chart-wrap">
-                  <canvas id="categoryChart"></canvas>
-                </div>
-              </div>
-              <div class="card chart-card">
-                <div class="card-header">
-                  <div>
-                    <h3>Sentiment by category</h3>
-                    <p class="chart-description">Positive, neutral, and negative review counts</p>
-                  </div>
-                </div>
-                <div class="chart-wrap">
-                  <canvas id="categorySentimentChart"></canvas>
-                </div>
-              </div>
-            </div>
-            <div class="analytics-detail-grid">
-              <div class="card analytics-detail-card">
-                <div class="card-header">
-                  <div>
-                    <h3>Category performance</h3>
-                    <p class="chart-description">Rating and negative feedback for each category</p>
-                  </div>
-                </div>
-                <div class="table-wrap">
-                  <table>
-                    <thead><tr><th>Category</th><th>Reviews</th><th>Avg. rating</th><th>Negative</th></tr></thead>
-                    <tbody id="categoryPerformanceBody"></tbody>
-                  </table>
-                </div>
-              </div>
-              <div class="card analytics-detail-card">
-                <div class="card-header">
-                  <div>
-                    <h3>Complaint themes</h3>
-                    <p class="chart-description">Topics detected in negative feedback</p>
-                  </div>
-                </div>
-                <div id="analyticsComplaintThemes" class="analytics-theme-list"></div>
-              </div>
-            </div>
-          </section>
-
-          <section class="page-view" id="insights-view">
-            <div class="section-header">
-              <div>
-                <p class="eyebrow">Advanced</p>
-                <h2>Customer Insights</h2>
-                <p class="section-description">Identify customer themes and opportunities across your products.</p>
-              </div>
-            </div>
-            <div class="insight-grid" id="insightGrid"></div>
-          </section>
-
-          <section class="page-view" id="copilot-view">
-            <div class="section-header">
-              <div>
-                <p class="eyebrow">Evidence-based answers</p>
-                <h2>Insights Copilot</h2>
-                <p class="section-description">Ask questions about the feedback in this workspace. Answers use your current review dataset.</p>
-              </div>
-            </div>
-            <div class="copilot-layout card">
-              <div class="copilot-welcome">
-                <span class="copilot-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
-                <div>
-                  <strong>Ask your feedback data</strong>
-                  <p>Try “What are the most common complaints?” or “How do customers rate delivery?”</p>
-                </div>
-              </div>
-              <div class="copilot-suggestions">
-                <button type="button" class="chip copilot-prompt">What are the most common complaints?</button>
-                <button type="button" class="chip copilot-prompt">Which product has the lowest rating?</button>
-                <button type="button" class="chip copilot-prompt">Summarize negative feedback</button>
-              </div>
-              <div id="copilotConversation" class="copilot-conversation" aria-live="polite"></div>
-              <form id="copilotForm" class="copilot-form">
-                <label class="sr-only" for="copilotQuestion">Ask a question about your feedback</label>
-                <input id="copilotQuestion" type="text" placeholder="Ask a question about your feedback..." maxlength="300" required />
-                <button class="primary-btn" type="submit"><i class="fa-solid fa-arrow-up"></i> Ask</button>
-              </form>
-              <small class="data-disclaimer">Answers are generated from the feedback currently stored in this browser. Import your own data to analyze it.</small>
-            </div>
-          </section>
-
-          <section class="page-view" id="complaints-view">
-            <div class="section-header">
-              <div>
-                <p class="eyebrow">Close the loop</p>
-                <h2>Complaint tracking</h2>
-                <p class="section-description">Turn negative feedback into trackable issues and follow each resolution.</p>
-              </div>
-              <button class="secondary-btn" id="syncComplaintsBtn"><i class="fa-solid fa-rotate"></i> Create from negative reviews</button>
-            </div>
-            <div class="complaint-summary" id="complaintSummary"></div>
-            <div class="table-card card">
-              <div class="table-wrap">
-                <table>
-                  <thead><tr><th>Issue</th><th>Customer / product</th><th>Priority</th><th>Assignee</th><th>Status</th><th>Created</th></tr></thead>
-                  <tbody id="complaintsTableBody"></tbody>
-                </table>
-              </div>
-            </div>
-          </section>
-
-          <section class="page-view" id="data-view">
-            <div class="section-header">
-              <div>
-                <p class="eyebrow">Bring your own data</p>
-                <h2>Import feedback</h2>
-                <p class="section-description">Upload a CSV or Excel file. Review the mapped rows and duplicates before adding them.</p>
-              </div>
-            </div>
-            <div class="card import-card">
-              <label class="import-dropzone" for="feedbackFileInput">
-                <span class="import-icon"><i class="fa-solid fa-cloud-arrow-up"></i></span>
-                <strong>Choose a CSV or Excel file</strong>
-                <span>Supported columns: customerName, email, product, category, rating, reviewTitle, reviewText, date</span>
-                <input id="feedbackFileInput" type="file" accept=".csv,.xlsx,.xls,text/csv" />
-              </label>
-              <div class="import-status" id="importStatus" aria-live="polite"></div>
-              <div class="table-wrap import-preview-wrap" id="importPreviewWrap" hidden>
-                <table>
-                  <thead><tr><th>Customer</th><th>Product</th><th>Rating</th><th>Review</th><th>Sentiment</th><th>Import status</th></tr></thead>
-                  <tbody id="importPreviewBody"></tbody>
-                </table>
-              </div>
-              <div class="import-actions" id="importActions" hidden>
-                <span id="importCount"></span>
-                <button type="button" class="primary-btn" id="confirmImportBtn">Import valid feedback</button>
-              </div>
-            </div>
-          </section>
-
-          <section class="page-view" id="reports-view">
-            <div class="section-header">
-              <div>
-                <p class="eyebrow">Reporting</p>
-                <h2>Reports</h2>
-                <p class="section-description">Review key performance metrics and export a report.</p>
-              </div>
-              <div class="action-group">
-                <button class="secondary-btn" id="csvReportBtn"><i class="fa-solid fa-file-csv"></i> Export CSV</button>
-                <button class="secondary-btn" id="printReportBtn"><i class="fa-solid fa-print"></i> Print</button>
-                <button class="primary-btn" id="pdfReportBtn"><i class="fa-solid fa-file-pdf"></i> Export PDF</button>
-              </div>
-            </div>
-            <div id="reportSummary" class="report-summary card"></div>
-          </section>
-
-          <section class="page-view" id="notifications-view">
-            <div class="section-header">
-              <div>
-                <p class="eyebrow">System</p>
-                <h2>Notification Center</h2>
-                <p class="section-description">Keep track of important review activity and response reminders.</p>
-              </div>
-            </div>
-            <div id="notificationCenterList" class="notification-center-list"></div>
-          </section>
-
-          <section class="page-view" id="settings-view">
-            <div class="section-header">
-              <div>
-                <p class="eyebrow">Preferences</p>
-                <h2>Settings</h2>
-                <p class="section-description">Manage your profile, appearance, notifications, and workspace data.</p>
-              </div>
-            </div>
-            <div class="settings-grid">
-              <div class="card">
-                <h3>Profile</h3>
-                <div class="input-group">
-                  <label>Display name</label>
-                  <input id="displayNameInput" type="text" placeholder="Admin" />
-                </div>
-                <div class="input-group">
-                  <label>Profile picture</label>
-                  <input id="profileImageInput" type="text" placeholder="Paste image URL or leave blank" />
-                </div>
-                <button class="primary-btn" id="saveProfileBtn">Save profile</button>
-              </div>
-
-              <div class="card">
-                <h3>Appearance</h3>
-                <div class="toggle-row">
-                  <span>Light mode</span>
-                  <input id="lightModeToggle" type="checkbox" />
-                </div>
-                <div class="toggle-row">
-                  <span>Dark mode</span>
-                  <input id="darkModeToggle" type="checkbox" />
-                </div>
-              </div>
-
-              <div class="card">
-                <h3>Notifications</h3>
-                <div class="toggle-row"><span>New review alerts</span><input type="checkbox" id="notifyNewReview" checked /></div>
-                <div class="toggle-row"><span>Negative review alerts</span><input type="checkbox" id="notifyNegativeReview" checked /></div>
-                <div class="toggle-row"><span>Low rating alerts</span><input type="checkbox" id="notifyLowRating" checked /></div>
-                <div class="toggle-row"><span>Pending response reminders</span><input type="checkbox" id="notifyPendingResponse" checked /></div>
-              </div>
-
-              <div class="card">
-                <h3>Data management</h3>
-                <button class="danger-btn" id="resetDemoDataBtn">Reset sample data</button>
-                <button class="secondary-btn" id="clearAllDataBtn">Clear demo data</button>
-              </div>
-            </div>
-          </section>
+          </div>
         </div>
-      </main>
-    </div>
-
-    <div class="toast-container" id="toastContainer"></div>
-
-    <div class="modal" id="reviewModal">
-      <div class="modal-content">
-        <button class="modal-close" id="closeReviewModal"><i class="fa-solid fa-xmark"></i></button>
-        <div id="reviewModalBody"></div>
       </div>
-    </div>
+    </main>
 
-    <script src="/js/sentiment.js"></script>
     <script src="/js/storage.js"></script>
-    <script src="/js/analytics.js"></script>
-    <script src="/js/insights.js"></script>
-    <script src="/js/reviews.js"></script>
-    <script src="/js/dashboard.js"></script>
-    <script src="/js/reports.js"></script>
-    <script src="/js/workspace.js"></script>
-    <script src="/js/app.js"></script>
+    <script>
+      // If user is already logged in, enhance buttons to go to their portal
+      document.addEventListener('DOMContentLoaded', () => {
+        const auth = typeof ensureAuth === 'function' ? ensureAuth() : null;
+        if (auth && auth.isLoggedIn) {
+          const targetUrl = auth.role === 'customer' ? '/customer.html' : '/dashboard.html';
+          const topActions = document.querySelector('.welcome-top-actions');
+          if (topActions) {
+            topActions.innerHTML = `
+              <span style="font-size: 13px; color: var(--text-muted); font-weight: 500;">Hi, ${auth.name || 'User'}</span>
+              <a href="${targetUrl}" class="welcome-signup-btn">Go to ${auth.role === 'customer' ? 'Customer Portal' : 'Dashboard'} &rarr;</a>
+            `;
+          }
+        }
+      });
+    </script>
   </body>
 </html>

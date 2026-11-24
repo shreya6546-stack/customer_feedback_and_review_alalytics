@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (role === 'customer') {
       saveCustomerProfile({ name: user.name, email: user.email });
     }
-    window.location.href = role === 'customer' ? 'customer.html' : 'index.html';
+    window.location.href = role === 'customer' ? 'customer.html' : 'dashboard.html';
   }
 
   // 1-Click Admin Demo Login

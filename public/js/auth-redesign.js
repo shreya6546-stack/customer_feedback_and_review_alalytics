@@ -114,7 +114,7 @@ function completeUserSignIn(user) {
       settings.displayName = user.name;
       saveSettings(settings);
     }
-    window.location.href = '/index.html';
+    window.location.href = '/dashboard.html';
   }
 }
 

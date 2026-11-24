@@ -1,6 +1,6 @@
 {
-  "version": 1795512563527,
-  "lastModified": "2026-11-24T09:29:23.527Z",
+  "version": 1795514131053,
+  "lastModified": "2026-11-24T09:55:31.053Z",
   "reviews": [
     {
       "id": "r1",
@@ -762,6 +762,21 @@
   ],
   "notifications": [
     {
+      "id": "notif-mwuir67x-d1b0ed9a",
+      "title": "Response Sent",
+      "message": "Replied to Marcus's review for SmartHub Pro.",
+      "unread": true,
+      "createdAt": "2026-11-24T09:55:31.005Z"
+    },
+    {
+      "id": "notif-mwuir67p-f848df00",
+      "reviewId": "r-mwuir67p-144e526d",
+      "title": "New Customer Review",
+      "message": "Marcus Vance gave a 5-star review for SmartHub Pro.",
+      "unread": true,
+      "createdAt": "2026-11-24T09:55:30.997Z"
+    },
+    {
       "id": "notif-mwuhtkpi-bdde9bba",
       "title": "Response Sent",
       "message": "Replied to Marcus's review for SmartHub Pro.",
@@ -974,6 +989,46 @@
       "companyName": "Tech Ventures Inc",
       "phone": "555-0100",
       "createdAt": "2026-11-24T09:28:30.995Z"
+    },
+    {
+      "id": "user-mwuipye0-513bf5ab",
+      "name": "Acme Global Corp",
+      "email": "test_corp_1795514074199@feedbackpro.io",
+      "password": "Password123!",
+      "role": "company",
+      "companyName": "Acme Global Corp",
+      "phone": "+1-555-0199",
+      "createdAt": "2026-11-24T09:54:34.200Z"
+    },
+    {
+      "id": "user-mwuipye7-b14e39fc",
+      "name": "Jane Customer",
+      "email": "test_cust_1795514074207@feedbackpro.io",
+      "password": "Password123!",
+      "role": "customer",
+      "companyName": "",
+      "phone": "",
+      "createdAt": "2026-11-24T09:54:34.208Z"
+    },
+    {
+      "id": "user-mwuipyf2-b0d63146",
+      "name": "API Customer",
+      "email": "api_cust_1795514074238@example.com",
+      "password": "Password123!",
+      "role": "customer",
+      "companyName": "",
+      "phone": "",
+      "createdAt": "2026-11-24T09:54:34.238Z"
+    },
+    {
+      "id": "user-mwuipyf7-e5ff2463",
+      "name": "Tech Ventures Inc",
+      "email": "api_corp_1795514074243@example.com",
+      "password": "Password123!",
+      "role": "company",
+      "companyName": "Tech Ventures Inc",
+      "phone": "555-0100",
+      "createdAt": "2026-11-24T09:54:34.243Z"
     }
   ]
 }

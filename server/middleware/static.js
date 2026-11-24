@@ -29,13 +29,21 @@ function serveStatic(req, res, pathname) {
   let cleanPath = pathname || (req && req.url ? req.url.split('?')[0] : '/');
   // Route aliases
   if (cleanPath === '/' || cleanPath === '') {
+    cleanPath = '/index.html';
+  } else if (cleanPath === '/welcome') {
     cleanPath = '/welcome.html';
   } else if (cleanPath === '/dashboard') {
-    cleanPath = '/index.html';
+    cleanPath = '/dashboard.html';
+  } else if (cleanPath === '/login') {
+    cleanPath = '/login.html';
+  } else if (cleanPath === '/signup') {
+    cleanPath = '/signup.html';
   } else if (cleanPath === '/signup/customer') {
     cleanPath = '/signup-customer.html';
   } else if (cleanPath === '/signup/company') {
     cleanPath = '/signup-company.html';
+  } else if (cleanPath === '/customer') {
+    cleanPath = '/customer.html';
   }
 
   // Prevent directory traversal

@@ -90,7 +90,7 @@ function renderCustomerHeaderAuth() {
     `;
   } else if (auth.isLoggedIn && (auth.role || 'admin') === 'admin') {
     container.innerHTML = `
-      <a href="index.html" class="primary-btn">
+      <a href="dashboard.html" class="primary-btn">
         <i class="fa-solid fa-gauge-high"></i> Admin Dashboard
       </a>
       <button type="button" class="secondary-btn" id="customerLogoutBtn">
